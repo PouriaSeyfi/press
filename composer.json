@@ -1,0 +1,14 @@
+{
+    "name": "pouria/press",
+    "description": "An elegant markdown-powered blog for the Laravel framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pouria Seyfi",
+            "email": "seyfipouria@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^6.18"
+    }
+}
