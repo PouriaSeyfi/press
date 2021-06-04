@@ -4,6 +4,8 @@
 namespace pouria\Press;
 
 
+use Carbon\Carbon;
+use Carbon\Exceptions\Exception;
 use Illuminate\Support\Facades\File;
 
 class PressFileParser
@@ -17,6 +19,7 @@ class PressFileParser
         $this->filename = $filename;
         $this->splitFile();
         $this->explodeData();
+        $this->processFields();
     }
 
     public function getData()
@@ -27,7 +30,7 @@ class PressFileParser
     protected function splitFile()
     {
         preg_match('/^\-{3}(.*?)\-{3}(.*)/s',
-            File::get($this->filename),
+            File::exists($this->filename) ? File::get($this->filename) : $this->filename,
             $this->data
         );
     }
@@ -39,5 +42,16 @@ class PressFileParser
             $this->data[$fieldArray[1]] = $fieldArray[2];
         }
         $this->data['body'] = trim($this->data[2]);
+    }
+
+    protected function processFields()
+    {
+        foreach ($this->data as $field => $value) {
+            if ($field === 'date') {
+                $this->data[$field] = Carbon::parse($value);
+            } elseif ($field === 'body') {
+                $this->data[$field] = MarkdownParser::parse($value);
+            }
+        }
     }
 }
