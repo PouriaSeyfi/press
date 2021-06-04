@@ -10,5 +10,15 @@
     ],
     "require-dev": {
         "orchestra/testbench": "^6.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "pouria\\Press\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "pouria\\Press\\Tests\\" : "tests/"
+        }
     }
 }
