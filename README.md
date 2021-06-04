@@ -1,3 +1,3 @@
-### Lesson 6
-separate title and description from header with testing
+### Lesson 7
+#### Test: the_body_gets_saved_and_trimed
 
