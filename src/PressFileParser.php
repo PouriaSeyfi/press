@@ -30,4 +30,13 @@ class PressFileParser
             $this->data
         );
     }
+
+    protected function explodeData()
+    {
+        foreach (explode("\n", trim($this->data[1])) as $fieldString) {
+            preg_match('/(.*):\s?(.*)/', $fieldString, $fieldArray);
+            $this->data[$fieldArray[1]] = $fieldArray[2];
+        }
+        $this->data['body'] = trim($this->data[2]);
+    }
 }

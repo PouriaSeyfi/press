@@ -1,3 +1,3 @@
-### Lesson 5
-split header and body from markdown file with testing
+### Lesson 6
+separate title and description from header with testing
 
