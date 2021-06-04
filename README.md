@@ -1,3 +1,2 @@
-### Lesson 1-2
-add phpunit to ~/.bashrc
-`alias phpunit='vendor/bin/phpunit'`
+### Lesson 4
+add markdown parser package and simple test for it

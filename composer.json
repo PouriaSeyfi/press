@@ -20,5 +20,8 @@
         "psr-4": {
             "pouria\\Press\\Tests\\" : "tests/"
         }
+    },
+    "require": {
+        "erusev/parsedown": "^1.7"
     }
 }
