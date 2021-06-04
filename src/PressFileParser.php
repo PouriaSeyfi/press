@@ -16,6 +16,7 @@ class PressFileParser
     {
         $this->filename = $filename;
         $this->splitFile();
+        $this->explodeData();
     }
 
     public function getData()
