@@ -1,11 +1,11 @@
 <?php
 
 
-namespace pouria\Press\Tests;
+namespace pouria\Press\Tests\Feature;
 
 
-use Orchestra\Testbench\TestCase;
 use pouria\Press\MarkdownParser;
+use pouria\Press\Tests\TestCase;
 
 class MarkdownTest extends TestCase
 {

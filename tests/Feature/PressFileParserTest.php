@@ -5,8 +5,8 @@ namespace pouria\Press\Tests\Feature;
 
 
 use Carbon\Carbon;
-use Orchestra\Testbench\TestCase;
 use pouria\Press\PressFileParser;
+use pouria\Press\Tests\TestCase;
 
 class PressFileParserTest extends TestCase
 {
