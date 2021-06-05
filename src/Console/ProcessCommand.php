@@ -22,15 +22,19 @@ class ProcessCommand extends Command
             return $this->warn('Please publish the config file by running \'php artisan vendor:publish --tag=press-config\'');
         }
 
-        $posts = Press::driver()->fetchPosts();
-        foreach ($posts as $post) {
-            Post::create([
-                'identifier' => str_random(),
-                'slug' => str_slug($post['title']),
-                'title' => $post['title'],
-                'body' => $post['body'],
-                'extra' => $post['extra'] ?? '',
-            ]);
+        try {
+            $posts = Press::driver()->fetchPosts();
+            foreach ($posts as $post) {
+                Post::create([
+                    'identifier' => str_random(),
+                    'slug' => str_slug($post['title']),
+                    'title' => $post['title'],
+                    'body' => $post['body'],
+                    'extra' => $post['extra'] ?? '',
+                ]);
+            }
+        }catch (\Exception $e){
+            $this->error($e->getMessage());
         }
     }
 
