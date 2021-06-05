@@ -1,4 +1,6 @@
-### Lesson 13
+### Lesson 14
 
-#### database configs and migration for posts
+#### create post test 
+
+> composer require laravel/legacy-factories
 
