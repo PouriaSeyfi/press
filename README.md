@@ -1,3 +1,3 @@
-### Lesson 17
+### Lesson 18
 
-#### get blog files
+#### vendor:publish config file
