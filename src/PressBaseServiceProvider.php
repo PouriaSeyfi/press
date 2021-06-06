@@ -6,6 +6,7 @@ namespace pouria\Press;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use pouria\Press\Console\ProcessCommand;
+use pouria\Press\Facades\Press;
 
 class PressBaseServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,9 @@ class PressBaseServiceProvider extends ServiceProvider
             $this->registerPublishing();
         }
         $this->registerResources();
-        $this->loadViewsFrom(__DIR__.'/../resources/views','press');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'press');
+
+        $this->registerFacades();
         $this->registerRoutes();
     }
 
@@ -37,22 +40,29 @@ class PressBaseServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/press.php' => config_path('press.php')
-        ],'press-config');
+        ], 'press-config');
     }
 
     protected function registerRoutes()
     {
-        Route::group($this->routeConfiguration(),function (){
-           $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         });
     }
 
     protected function routeConfiguration()
     {
         return [
-          'prefix' => Press::path(),
-          'namespace' => 'pouria\Press\Http\Controllers',
+            'prefix' => Press::path(),
+            'namespace' => 'pouria\Press\Http\Controllers',
         ];
+    }
+
+    protected function registerFacades()
+    {
+        $this->app->singleton('Press',function ($app){
+            return new \pouria\Press\Press();
+        });
     }
 
 }

@@ -5,10 +5,8 @@ namespace pouria\Press\Console;
 
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
+use pouria\Press\Facades\Press;
 use pouria\Press\Post;
-use pouria\Press\Press;
-use pouria\Press\PressFileParser;
 
 class ProcessCommand extends Command
 {

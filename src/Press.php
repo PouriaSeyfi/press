@@ -6,22 +6,21 @@ namespace pouria\Press;
 
 class Press
 {
-
-    public static function configNotPublished()
+    public function configNotPublished()
     {
         return is_null(config('press'));
     }
 
-    public static function driver()
+    public function driver()
     {
         $driver = title_case(config('press.driver'));
         $class = 'pouria\\Press\\Drivers\\' . $driver . 'Driver';
         return new $class;
     }
 
-    public static function path()
+    public function path()
     {
-        return config('press.path','blogs');
+        return config('press.path', 'blogs');
     }
 
 }
