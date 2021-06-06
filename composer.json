@@ -20,5 +20,17 @@
         "psr-4": {
             "pouria\\Press\\Tests\\" : "tests/"
         }
+    },
+    "require": {
+        "erusev/parsedown": "^1.7",
+        "laravel/helpers": "^1.4",
+        "laravel/legacy-factories": "^1.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "pouria\\Press\\PressBaseServiceProvider"
+            ]
+        }
     }
 }

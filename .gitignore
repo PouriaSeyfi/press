@@ -13,3 +13,4 @@ nmp-debug.log
 yarn.log
 .env
 .phpunit.result.cache
+:memory
