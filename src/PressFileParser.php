@@ -3,9 +3,6 @@
 
 namespace pouria\Press;
 
-
-use Carbon\Carbon;
-use Carbon\Exceptions\Exception;
 use Illuminate\Support\Facades\File;
 
 class PressFileParser
@@ -54,11 +51,22 @@ class PressFileParser
     protected function processFields()
     {
         foreach ($this->data as $field => $value) {
-            $class = 'pouria\\Press\\Fields\\' . ucwords($field);
+
+            $class = $this->getField(title_case($field));
             if (!class_exists($class) && !method_exists($class, 'process')) {
                 $class = 'pouria\\Press\\Fields\\Extra';
             }
-            $this->data = array_merge($this->data, $class::process($field, $value,$this->data));
+            $this->data = array_merge($this->data, $class::process($field, $value, $this->data));
+        }
+    }
+
+    private function getField($field)
+    {
+        foreach (\pouria\Press\Facades\Press::availableFields() as $availableField) {
+            $class = new \ReflectionClass($availableField);
+            if ($class->getShortName() == $field) {
+                return $class->getName();
+            }
         }
     }
 }

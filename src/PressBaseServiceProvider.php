@@ -17,10 +17,6 @@ class PressBaseServiceProvider extends ServiceProvider
             $this->registerPublishing();
         }
         $this->registerResources();
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'press');
-
-        $this->registerFacades();
-        $this->registerRoutes();
     }
 
     public function register()
@@ -34,6 +30,10 @@ class PressBaseServiceProvider extends ServiceProvider
     private function registerResources()
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'press');
+        $this->registerFacades();
+        $this->registerRoutes();
+        $this->registerFields();
     }
 
     protected function registerPublishing()
@@ -63,6 +63,17 @@ class PressBaseServiceProvider extends ServiceProvider
         $this->app->singleton('Press',function ($app){
             return new \pouria\Press\Press();
         });
+    }
+
+    protected function registerFields()
+    {
+        Press::fields([
+            Fields\Body::class,
+            Fields\Date::class,
+            Fields\Description::class,
+            Fields\Extra::class,
+            Fields\Title::class,
+        ]);
     }
 
 }

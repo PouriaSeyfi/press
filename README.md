@@ -1,3 +1,3 @@
-### Lesson 24
+### Lesson 25
 
-#### Allowing for field expansion of posts 
+#### Allowing for field expansion of posts part 2
